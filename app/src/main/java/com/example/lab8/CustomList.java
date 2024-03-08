@@ -59,11 +59,23 @@ public class CustomList extends ArrayAdapter<City> {
     }
 
     public boolean hasCity(City city) {
-        return cities.contains(city);
+        for (City c : cities) {
+            if (c.getCityName().equals(city.getCityName()) && c.getProvinceName().equals(city.getProvinceName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
+
     public void deleteCity(City city) {
-        cities.remove(city);
+        for (int i = 0; i < cities.size(); i++) {
+            City c = cities.get(i);
+            if (c.getCityName().equals(city.getCityName()) && c.getProvinceName().equals(city.getProvinceName())) {
+                cities.remove(i);
+                return;
+            }
+        }
     }
 
     public int countCities() {
