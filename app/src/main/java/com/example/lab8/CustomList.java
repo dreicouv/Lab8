@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 public class CustomList extends ArrayAdapter<City> {
 
-    private ArrayList<City> cities;
-    private Context context;
+    private final ArrayList<City> cities;
+    private final Context context;
 
     public CustomList(Context context, ArrayList<City> cities) {
         super(context, 0, cities);
@@ -56,5 +56,17 @@ public class CustomList extends ArrayAdapter<City> {
      */
     public void addCity(City city) {
         cities.add(city);
+    }
+
+    public boolean hasCity(City city) {
+        return cities.contains(city);
+    }
+
+    public void deleteCity(City city) {
+        cities.remove(city);
+    }
+
+    public int countCities() {
+        return cities.size();
     }
 }
