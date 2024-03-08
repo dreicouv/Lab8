@@ -1,20 +1,34 @@
 package com.example.lab8;
 
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 public class CustomListTest {
+    private CustomList list;
     /**
-     * this gets size of the list
-     * @return
+     * create a mocklist for my citylist
+     * @return list
      */
-    public int getCount(){
-        return cities.size();
+    public CustomList MockCityList(){
+        list = new CustomList(null,new ArrayList<>());
+        return list;
     }
-
     /**
-     * this adds a city object to the list
-     * for the first phase it will be empty
-     * @param city
+     * get the size of the list
+     * increase the list by adding a new city
+     * check if our current size matches the initial size
+     plus one
      */
-    public void addCity(City city){
-
+    @Test
+    public void addCityTest(){
+        list = MockCityList();
+        int listSize = list.getCount();
+        list.addCity(new City("Estevan", "SK"));
+        assertEquals(list.getCount(),listSize + 1);
     }
 }
